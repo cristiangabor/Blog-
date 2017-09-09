@@ -7,6 +7,10 @@ from .forms import PostForm
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    query = request.GET.get("q")
+    if query:
+        query_list=Post.objects.filter(title__contains=query)
+        return render(request, 'blog/post_list.html', {'posts':query_list})
     return render(request, 'blog/post_list.html', {'posts':posts})
 
 
@@ -26,7 +30,7 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
-    
+
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
