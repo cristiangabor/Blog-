@@ -1,34 +1,47 @@
 {% load staticfiles %}
 <html>
   <head>
-    <title>Django Girls blog</title>
+    <title>CristianGaborBlog</title>
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-      <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="{% static 'css/blog.css' %}">
   </head>
+
   <body>
-    <div class="container-fluid">
-      <div class="page-header">
-        <form method="GET" action="">
-          <input type="text" name='q' placeholder="Search for posts"/>
-          <input type="submit" value="search"/>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+            <li><a href="#">Archive</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" method="GET" action="">
+          <div class="form-group">
+            <input type="text" class="form-control"  name='q' placeholder="Search for posts">
+          </div>
+            <button type="submit"  value="search" class="btn btn-default">Search</button>
         </form>
         {% if user.is_authenticated %}
           <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
-        <h1><a href="/">Django Girls Blog</a></h1>
       </div>
-      <div class="content container">
-          <div class="row">
-              <div class="col-md-8">
-              {% block content %}
-              {% endblock %}
-              </div>
-          </div>
+    </nav>
+
+    <div class="container-fluid">
+
+      <div class="page-header">
+        <h1>Cristian Gabor Blog</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          {% block content %}
+          {% endblock %}
+        </div>
       </div>
     </div>
   </body>
+
+
   <footer class="container-fluid">
     <p>Footer Text</p>
   </footer>
