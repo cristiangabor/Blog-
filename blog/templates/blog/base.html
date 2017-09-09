@@ -10,16 +10,16 @@
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="padding-left:350px;">
           <li class="active"><a href="/">Home</a></li>
-            <li><a href="#">Archive</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/archive/">Archive</a></li>
+            <li><a href="/contact/">Contact</a></li>
         </ul>
         <form class="navbar-form navbar-left" method="GET" action="">
           <div class="form-group">
-            <input type="text" class="form-control"  name='q' placeholder="Search for posts">
+            <input type="text" class="form-control"  name='q' placeholder="Search for posts" value="{{request.GET.q}}">
           </div>
-            <button type="submit"  value="search" class="btn btn-default">Search</button>
+            <button type="submit"  value="search" class="btn btn-warning">Search</button>
         </form>
         {% if user.is_authenticated %}
           <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
@@ -33,9 +33,14 @@
         <h1>Cristian Gabor Blog</h1>
       </div>
       <div class="row">
+
         <div class="col-md-8">
           {% block content %}
           {% endblock %}
+        </div>
+
+        <div class="col-sm-4">
+
         </div>
       </div>
     </div>
