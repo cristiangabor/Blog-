@@ -1,14 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.conf import settings
 from django.shortcuts import redirect
 from django.utils import timezone
-from .forms import PostForm, ContactForm
+from .forms import PostForm
+from django.template.loader import get_template
+from django.template import Context
 # Create your views here.
 
 def contact(request):
-    form_class = ContactForm
-    return render(request, 'blog/contact.html', {'form': form_class,})
-
+    return render(request, 'blog/contact.html', {})
 def archive(request):
 
     posts = Post.objects.all()
