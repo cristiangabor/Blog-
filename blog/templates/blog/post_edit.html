@@ -1,4 +1,12 @@
 {% extends 'blog/base.html' %}
+{% load markdown_deux_tags %}
+{% load static %}
+
+{% block head_extra %}
+
+  <p class="content-markdown">{{form.media}}</p>
+
+{% endblock head_extra %}
 
 {% block content %}
     <h1>New post</h1>

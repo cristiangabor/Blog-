@@ -9,7 +9,15 @@ from django.template import Context
 # Create your views here.
 
 def contact(request):
-    return render(request, 'blog/contact.html', {})
+    about_me = """
+    I am a young Python enthusiast from Romania, Timisoara, with 2 years of experience
+    in python programming. I am interested in making usefull tools with the help of programming. My next
+    dream is to build an electric motobike controlled by raspberry pi.
+
+    """
+
+
+    return render(request, 'blog/contact.html', {"me":about_me})
 def archive(request):
 
     posts = Post.objects.all()

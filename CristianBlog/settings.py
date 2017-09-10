@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'markdown_deux',
+    #third party library
+    'pagedown',
 ]
 
 MIDDLEWARE = [
