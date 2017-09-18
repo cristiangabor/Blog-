@@ -1,17 +1,23 @@
 {% extends 'blog/base.html' %}
 {% load markdown_deux_tags %}
 {% load static %}
+{% load staticfiles %}
 
 {% block head_extra %}
 
-  <p class="content-markdown">{{form.media}}</p>
+  <p class="content-markdown"> {{form.media}} </p>
 
 {% endblock head_extra %}
 
 {% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+    <div class="colortext" style="  color: orange;
+      font-family: Verdana, sans-serif;
+      font-weight: normal;
+      font-size: 20px;">
+      <h1>New post</h1>
+      <form method="POST" enctype="multipart/form-data" class="post-form">{% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="save btn btn-default">Save</button>
+    </div>
     </form>
 {% endblock %}
